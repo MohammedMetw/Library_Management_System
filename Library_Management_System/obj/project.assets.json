@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\HP Elite BOOK\\.nuget\\packages\\": {}
+    "C:\\Users\\Ashrafshams\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Library_Management_System\\Library_Management_System\\Library_Management_System.csproj",
+      "projectUniqueName": "D:\\Librarty m\\Library_Management_System\\Library_Management_System\\Library_Management_System.csproj",
       "projectName": "Library_Management_System",
-      "projectPath": "D:\\Library_Management_System\\Library_Management_System\\Library_Management_System.csproj",
-      "packagesPath": "C:\\Users\\HP Elite BOOK\\.nuget\\packages\\",
-      "outputPath": "D:\\Library_Management_System\\Library_Management_System\\obj\\",
+      "projectPath": "D:\\Librarty m\\Library_Management_System\\Library_Management_System\\Library_Management_System.csproj",
+      "packagesPath": "C:\\Users\\Ashrafshams\\.nuget\\packages\\",
+      "outputPath": "D:\\Librarty m\\Library_Management_System\\Library_Management_System\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\HP Elite BOOK\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ashrafshams\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -66,7 +66,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

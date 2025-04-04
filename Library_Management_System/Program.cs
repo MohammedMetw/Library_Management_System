@@ -32,19 +32,35 @@ namespace Program
             // ✅ View all books
             Console.WriteLine("\n📚 Library Books:");
             myLibrary.View_ALL_Books();
+            Console.WriteLine(@"borrwo book
+
+
+
+");
             myLibrary.BorrowBook(user, "ORW0063");
             myLibrary.BorrowBook(user2, "ORW0063");
+            Console.WriteLine(@"finish borrwo book
 
+
+
+");
+            user.DisplayUserInfo();
             // ✅ View all books
             Console.WriteLine("\n-------📚 Library Books:");
             myLibrary.View_ALL_Books();
+            user.DisplayUserInfo();
+            Console.WriteLine(@"return book
 
-            
+
+
+");
+            myLibrary.ReturnBook(user, "ORW0063");
             user.DisplayUserInfo();
 
             // ✅ Prevent console from closing immediately
             Console.WriteLine("\nPress any key to exit...");
             Console.ReadKey();
+
 
           
         }

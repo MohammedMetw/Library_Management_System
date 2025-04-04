@@ -33,6 +33,18 @@ namespace Library_Management_System
                 Console.WriteLine($"User {Name} has already reserved book {bookId}.");
             }
         }
+        public void ReturnBook(string bookId)
+        {
+            if (ReservedBooks.Contains(bookId))
+            {
+                ReservedBooks.Remove(bookId);
+                Console.WriteLine($"User {Name} returned book {bookId}.");
+            }
+            else
+            {
+                Console.WriteLine($"User {Name} has not reserved book {bookId} anymore.");
+            }
+        }
 
         public void DisplayUserInfo()
         {

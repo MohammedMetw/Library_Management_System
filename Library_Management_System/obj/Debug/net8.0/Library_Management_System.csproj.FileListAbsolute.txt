@@ -12,3 +12,18 @@ D:\Library_Management_System\Library_Management_System\obj\Debug\net8.0\refint\L
 D:\Library_Management_System\Library_Management_System\obj\Debug\net8.0\Library_Management_System.pdb
 D:\Library_Management_System\Library_Management_System\obj\Debug\net8.0\Library_Management_System.genruntimeconfig.cache
 D:\Library_Management_System\Library_Management_System\obj\Debug\net8.0\ref\Library_Management_System.dll
+D:\Librarty m\Library_Management_System\Library_Management_System\bin\Debug\net8.0\Library_Management_System.exe
+D:\Librarty m\Library_Management_System\Library_Management_System\bin\Debug\net8.0\Library_Management_System.deps.json
+D:\Librarty m\Library_Management_System\Library_Management_System\bin\Debug\net8.0\Library_Management_System.runtimeconfig.json
+D:\Librarty m\Library_Management_System\Library_Management_System\bin\Debug\net8.0\Library_Management_System.dll
+D:\Librarty m\Library_Management_System\Library_Management_System\bin\Debug\net8.0\Library_Management_System.pdb
+D:\Librarty m\Library_Management_System\Library_Management_System\obj\Debug\net8.0\Library_Management_System.GeneratedMSBuildEditorConfig.editorconfig
+D:\Librarty m\Library_Management_System\Library_Management_System\obj\Debug\net8.0\Library_Management_System.AssemblyInfoInputs.cache
+D:\Librarty m\Library_Management_System\Library_Management_System\obj\Debug\net8.0\Library_Management_System.AssemblyInfo.cs
+D:\Librarty m\Library_Management_System\Library_Management_System\obj\Debug\net8.0\Library_Management_System.csproj.CoreCompileInputs.cache
+D:\Librarty m\Library_Management_System\Library_Management_System\obj\Debug\net8.0\Library_Management_System.sourcelink.json
+D:\Librarty m\Library_Management_System\Library_Management_System\obj\Debug\net8.0\Library_Management_System.dll
+D:\Librarty m\Library_Management_System\Library_Management_System\obj\Debug\net8.0\refint\Library_Management_System.dll
+D:\Librarty m\Library_Management_System\Library_Management_System\obj\Debug\net8.0\Library_Management_System.pdb
+D:\Librarty m\Library_Management_System\Library_Management_System\obj\Debug\net8.0\Library_Management_System.genruntimeconfig.cache
+D:\Librarty m\Library_Management_System\Library_Management_System\obj\Debug\net8.0\ref\Library_Management_System.dll

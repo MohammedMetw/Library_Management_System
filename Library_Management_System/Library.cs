@@ -108,6 +108,21 @@ namespace Library_Management_System
                 Console.WriteLine("Book doesn't already exist");
             }
         }
+        public void ReturnBook(USER user , string BookID)
+        {
+            var book = books.Values.FirstOrDefault(b => b.BookIds.Contains(BookID));
+
+            if (book != null)
+            {
+                 book.UpdateAvailability(1, BookID);
+                user.ReturnBook(BookID);
+                Console.WriteLine($"the book {BookID} returned to the library");
+            }
+            else
+            {
+                Console.WriteLine("Book doesn't already exist");
+            }
+        }
 
     }
 }
