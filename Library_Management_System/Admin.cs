@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -85,6 +85,13 @@ namespace Library_Management_System
                 Console.WriteLine(book.DisplayInfo());
             }
 
+        }
+        public static void DisplayAllUsers()
+        {
+            foreach (var user in USER.GetList())
+            {
+                user.DisplayUserInfo();
+            }
         }
     }
 }
