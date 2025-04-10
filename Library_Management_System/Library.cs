@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Library_Management_System;
@@ -10,18 +11,25 @@ namespace Library_Management_System
 {
 
     //Book handler
-    public class Library
+    public class LibraryHandler
     {
-        public Dictionary<string, Book> books;
+        public static Dictionary<string, Book> books = null!;
 
-        public Library()
+        public LibraryHandler()
         {
             books = new Dictionary<string, Book>();
         }
 
-        public void Add_NEW_Book(string title, string author, string isbn,  string bookId)
+        public static void Add_NEW_Book(string title, string author, string isbn, string bookId)
         {
-            if (!books.Values.Any(book => book.BookIds.Contains(bookId)))
+            if (books is null)
+            {
+                books = new Dictionary<string, Book>();
+                Book newbook = new Book(title, author, isbn, 1, 1, bookId, false);
+                newbook.IS_Reserved.Add(bookId, false);
+                books?.Add(isbn, newbook);
+            }
+            else if (!books.Values.Any(book => book.BookIds.Contains(bookId)))
             {
                 if (books.ContainsKey(isbn))
                 {
@@ -29,6 +37,8 @@ namespace Library_Management_System
                     books[isbn].TotalCopies++;
                     books[isbn].Available_Copies++;
                     books[isbn].IS_Reserved.Add(bookId, false);
+                    Console.WriteLine("book added successfully");
+
                 }
                 else
                 {
@@ -36,6 +46,7 @@ namespace Library_Management_System
                     Book newbook = new Book(title, author, isbn, 1, 1, bookId, false);
                     newbook.IS_Reserved.Add(bookId, false);
                     books.Add(isbn, newbook);
+                    Console.WriteLine("book added successfully");
                 }
             }
             else
@@ -43,17 +54,17 @@ namespace Library_Management_System
                 Console.WriteLine($"This book ID  {bookId}  already exists in the library.");
             }
 
-            
+
         }
 
-        public void Remove_Book(string book_id)
+        public static void Remove_Book(string book_id)
         {
             //find book with book ID
             var find_book = books.FirstOrDefault(b => b.Value.BookIds.Contains(book_id));
             if (find_book.Value.TotalCopies > 1)
             {
                 find_book.Value.BookIds.Remove(book_id);
-                
+
                 find_book.Value.TotalCopies--;
                 find_book.Value.Available_Copies--;
                 Console.WriteLine($"Book copy with ID {book_id} has been removed.");
@@ -68,7 +79,7 @@ namespace Library_Management_System
                 Console.WriteLine("BookID Not found");
             }
         }
-        public List<Book> Search_Book(string search_term)
+        public static List<Book> Search_Book(string search_term)
         {
             search_term = search_term.ToLower(); // search by title or Author
             var result = books.Values.Where(book => book.Title.ToLower().Contains(search_term) ||
@@ -77,8 +88,13 @@ namespace Library_Management_System
 
         }
 
-        public void View_ALL_Books()
+        public static void View_ALL_Books()
         {
+            if (books is null)
+            {
+                Console.WriteLine("There is no books in the library right now ");
+                return;
+            }
 
             foreach (var book in books.Values)
             {
@@ -87,8 +103,13 @@ namespace Library_Management_System
 
         }
 
-        public void BorrowBook(USER user, string BookID)
+        public static void BorrowBook(USER user, string BookID)
         {
+            if (books is null)
+            {
+                Console.WriteLine("Book doesn't already exist");
+                return;
+            }
             var book = books.Values.FirstOrDefault(b => b.BookIds.Contains(BookID));
 
             if (book != null)
@@ -103,18 +124,20 @@ namespace Library_Management_System
                     Console.WriteLine("No available copies. Adding user to waiting list...");
                 }
             }
-            else
+
+        }
+        public static void ReturnBook(USER user, string BookID)
+        {
+            if (books is null)
             {
                 Console.WriteLine("Book doesn't already exist");
+                return;
             }
-        }
-        public void ReturnBook(USER user , string BookID)
-        {
             var book = books.Values.FirstOrDefault(b => b.BookIds.Contains(BookID));
 
             if (book != null)
             {
-                 book.UpdateAvailability(1, BookID);
+                book.UpdateAvailability(1, BookID);
                 user.ReturnBook(BookID);
                 Console.WriteLine($"the book {BookID} returned to the library");
             }
@@ -123,6 +146,34 @@ namespace Library_Management_System
                 Console.WriteLine("Book doesn't already exist");
             }
         }
+        public static Book SearchBook(string BookID)
+        {
+            Book book = null!;
+            if (books is null)
+            {
+                Console.WriteLine("there is no books in the library right now");
+                return book;
+            }
+            else
+            {
+                var returnedBook = books.Values.FirstOrDefault(b => b.BookIds.Contains(BookID));
+                if (returnedBook != null)
+                {
+                    Console.WriteLine("The book was found successfully");
 
+                    Console.WriteLine(returnedBook.DisplayInfo());
+                    return returnedBook;
+                }
+                else return book;
+            }
+        }
+        public static void viewArrangedBooks()
+        {
+            var arrangedBooks = books.Values.OrderBy(book => book.Title).ToList();
+            foreach (var book in arrangedBooks)
+            {
+                Console.WriteLine(book.DisplayInfo());
+            }
+        }
     }
 }

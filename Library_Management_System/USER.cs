@@ -115,7 +115,7 @@ namespace Library_Management_System
         public USER ListAndChooseUser()
         {
             Console.WriteLine("Select an option: 1 - Log in, 2 - Sign up");
-            string input = Console.ReadLine();
+            string ?input = Console.ReadLine();
             if (input == "1")
             {
                 return Login();
@@ -127,7 +127,7 @@ namespace Library_Management_System
             else
             {
                 Console.WriteLine("Invalid option.");
-                return null;
+                return null!;
             }
         }
 
