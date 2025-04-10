@@ -17,29 +17,30 @@ namespace Program
 
             // ✅ Create a library instance  
             
-            USER user = new USER("11", "Esraa", "User", "");
-            USER user2 = new USER("12", "Mohammed", "User", "");
+            Reader user = new Reader("11", "Esraa", "User", "");
+            Reader user2 = new Reader("12", "Mohammed", "User", "");
 
             // ✅ Add books to the library
+            Admin admin = new Admin("14", "Mohammed Atef", "Admin", "");
             Console.WriteLine("Adding books to the library...\n");
-            LibraryHandler.Add_NEW_Book("The Great Gatsby", "F. Scott Fitzgerald", "12345", "GAT001");
-            LibraryHandler.Add_NEW_Book("1984", "George Orwell", "67890", "ORW001");
-            LibraryHandler.Add_NEW_Book("To Kill a Mockingbird", "Harper Lee", "11111", "LEE001");
-            LibraryHandler.Add_NEW_Book("1984", "George Orwell", "67890", "ORW002");
-            LibraryHandler.Add_NEW_Book("Mohammed", "George Orwell", "143670", "ORW0063");
-            LibraryHandler.SearchBook("ORW0063");
+            Admin.Add_NEW_Book("The Great Gatsby", "F. Scott Fitzgerald", "12345", "GAT001");
+            Admin.Add_NEW_Book("1984", "George Orwell", "67890", "ORW001");
+            Admin.Add_NEW_Book("To Kill a Mockingbird", "Harper Lee", "11111", "LEE001");
+            Admin.Add_NEW_Book("1984", "George Orwell", "67890", "ORW002");
+            Admin.Add_NEW_Book("Mohammed", "George Orwell", "143670", "ORW0063");
+            user.SearchBook("ORW0063");
             // ✅ View all books
             Console.WriteLine("\n📚 Library Books:");
-            LibraryHandler.View_ALL_Books();
+            Admin.View_ALL_Books();
             Console.WriteLine("\n📚 Library Arranged Books:");
-            LibraryHandler.viewArrangedBooks();
+            user.viewArrangedBooks();
             Console.WriteLine(@"borrwo book
 
 
     
 ");
-            LibraryHandler.BorrowBook(user, "ORW0063");
-            LibraryHandler.BorrowBook(user2, "ORW0063");
+            user.BorrowBook(user, "ORW0063");
+            user.BorrowBook(user2, "ORW0063");
             Console.WriteLine(@"finish borrwo book
 
 
@@ -48,14 +49,14 @@ namespace Program
             user.DisplayUserInfo();
             // ✅ View all books
             Console.WriteLine("\n-------📚 Library Books:");
-            LibraryHandler.View_ALL_Books();
+            Admin.View_ALL_Books();
             user.DisplayUserInfo();
             Console.WriteLine(@"return book
 
 
 
 ");
-            LibraryHandler.ReturnBook(user, "ORW0063");
+            user.ReturnBook("ORW0063");
             user.DisplayUserInfo();
 
             // ✅ Prevent console from closing immediately

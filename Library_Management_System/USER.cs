@@ -11,7 +11,7 @@ namespace Library_Management_System
         public string Role { get; set; }
         public string Password { get; set; }
         public List<string> ReservedBooks { get; private set; }
-
+        public static Dictionary<string, Book> books = null!;
         public USER(string id, string name, string role, string password)
         {
             Id = id;
@@ -21,29 +21,14 @@ namespace Library_Management_System
             ReservedBooks = new List<string>();
         }
 
-        public void ReserveBook(string bookId)
+        public void UserLogin()
         {
-            if (!ReservedBooks.Contains(bookId))
-            {
-                ReservedBooks.Add(bookId);
-                Console.WriteLine($"User {Name} reserved book {bookId}.");
-            }
-            else
-            {
-                Console.WriteLine($"User {Name} has already reserved book {bookId}.");
-            }
+            UserHandler.Login();
         }
-        public void ReturnBook(string bookId)
+        public void UserSignUp()
         {
-            if (ReservedBooks.Contains(bookId))
-            {
-                ReservedBooks.Remove(bookId);
-                Console.WriteLine($"User {Name} returned book {bookId}.");
-            }
-            else
-            {
-                Console.WriteLine($"User {Name} has not reserved book {bookId} anymore.");
-            }
+
+            UserHandler.SignUp();
         }
 
         public void DisplayUserInfo()
@@ -70,7 +55,7 @@ namespace Library_Management_System
 
     public class UserHandler
     {
-        private List<USER> _users;
+        private static List<USER> _users;
 
         public UserHandler()
         {
@@ -78,7 +63,7 @@ namespace Library_Management_System
             _users.Add(new USER("1", "esraa", "User", "1234"));
         }
 
-        public USER Login()
+        public static USER Login()
         {
             Console.WriteLine("Enter your username:");
             string username = Console.ReadLine();
@@ -99,7 +84,7 @@ namespace Library_Management_System
             }
         }
 
-        public USER SignUp()
+        public  static USER SignUp()
         {
             Console.WriteLine("Enter your name:");
             string name = Console.ReadLine();
@@ -112,7 +97,7 @@ namespace Library_Management_System
             return newUser;
         }
 
-        public USER ListAndChooseUser()
+        public static USER ListAndChooseUser()
         {
             Console.WriteLine("Select an option: 1 - Log in, 2 - Sign up");
             string ?input = Console.ReadLine();
@@ -131,7 +116,7 @@ namespace Library_Management_System
             }
         }
 
-        public void DisplayAllUsers()
+        public static void DisplayAllUsers()
         {
             foreach (var user in _users)
             {
