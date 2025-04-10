@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
@@ -17,11 +17,12 @@ namespace Program
 
             // ✅ Create a library instance  
             
-            Reader user = new Reader("11", "Esraa", "User", "");
-            Reader user2 = new Reader("12", "Mohammed", "User", "");
-
+            Reader user = new Reader("11", "Esraa", "User", "143");
+            Reader user2 = new Reader("12", "Mohammed", "User", "143");
+            Admin admin = new Admin("11", "Esraa", "Admin", "143");
             // ✅ Add books to the library
-            Admin admin = new Admin("14", "Mohammed Atef", "Admin", "");
+            USER.UserSignUp();
+           // USER.UserLogin();
             Console.WriteLine("Adding books to the library...\n");
             Admin.Add_NEW_Book("The Great Gatsby", "F. Scott Fitzgerald", "12345", "GAT001");
             Admin.Add_NEW_Book("1984", "George Orwell", "67890", "ORW001");
@@ -57,8 +58,10 @@ namespace Program
 
 ");
             user.ReturnBook("ORW0063");
-            user.DisplayUserInfo();
-
+            // user.DisplayUserInfo();
+            Console.WriteLine("-----------------------------------------------------");
+            Admin.DisplayAllUsers();
+            Console.WriteLine("-----------------------------------------------------");
             // ✅ Prevent console from closing immediately
             Console.WriteLine("\nPress any key to exit...");
             Console.ReadKey();
