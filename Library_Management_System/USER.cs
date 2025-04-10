@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,6 +7,8 @@ namespace Library_Management_System
 {
     public class USER
     {
+        private static List<USER> _users = new List<USER>();
+
         public string Id { get; set; }
         public string Name { get; set; }
         public string Role { get; set; }
@@ -19,13 +22,18 @@ namespace Library_Management_System
             Role = role;
             Password = password;
             ReservedBooks = new List<string>();
+            _users.Add(this);
+        }
+        public static List<USER> GetList()
+        {
+            return _users;
         }
 
-        public void UserLogin()
+        public static void UserLogin()
         {
             UserHandler.Login();
         }
-        public void UserSignUp()
+        public static void UserSignUp()
         {
 
             UserHandler.SignUp();
@@ -55,26 +63,19 @@ namespace Library_Management_System
 
     public class UserHandler
     {
-        private static List<USER> _users;
-
-        public UserHandler()
-        {
-            _users = new List<USER>();
-            _users.Add(new USER("1", "esraa", "User", "1234"));
-        }
-
+       
         public static USER Login()
         {
             Console.WriteLine("Enter your username:");
             string username = Console.ReadLine();
             Console.WriteLine("Enter your password:");
             string password = Console.ReadLine();
-            USER foundUser = _users.FirstOrDefault(u =>
-                u.Name.Equals(username, StringComparison.OrdinalIgnoreCase) &&
+            USER foundUser = USER.GetList().FirstOrDefault(u =>
+               u.Name.Equals(username, StringComparison.OrdinalIgnoreCase) &&
                 u.Password == password);
             if (foundUser != null)
             {
-                Console.WriteLine("Login successful.");
+                Console.WriteLine($"Login successful. hello {username}");
                 return foundUser;
             }
             else
@@ -90,9 +91,12 @@ namespace Library_Management_System
             string name = Console.ReadLine();
             Console.WriteLine("Set your password:");
             string password = Console.ReadLine();
-            string id = (_users.Count + 1).ToString();
+            string id = (USER.GetList()
+                 .Select(u => int.TryParse(u.Id, out int num) ? num : 0)
+                 .DefaultIfEmpty(0)
+                 .Max() + 1)
+                 .ToString();
             USER newUser = new USER(id, name, "User", password);
-            _users.Add(newUser);
             Console.WriteLine("Sign up successful.");
             return newUser;
         }
@@ -116,12 +120,6 @@ namespace Library_Management_System
             }
         }
 
-        public static void DisplayAllUsers()
-        {
-            foreach (var user in _users)
-            {
-                user.DisplayUserInfo();
-            }
-        }
+        
     }
 }
